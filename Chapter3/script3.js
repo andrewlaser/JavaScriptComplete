@@ -16,7 +16,13 @@ var retirement = function(year)
 retirement(10);
 
 
-
+function foo()
+{
+    //var age = 65;
+    console.log(age);
+}
+foo();
+console.log(age);
 
 
 
