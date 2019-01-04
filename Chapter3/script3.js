@@ -10,16 +10,19 @@ function calculateAge(year)
 
 var retirement = function(year)
 {
-    console.log(65 - (2016-year));
+    console.log(65 - (2019-year));
 }
 
-retirement(10);
+retirement(1990);
 
+
+var age = 20;
 
 function foo()
 {
-    //var age = 65;
     console.log(age);
+    //var age = 65;
+
 }
 foo();
 console.log(age);
