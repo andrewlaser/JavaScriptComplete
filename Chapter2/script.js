@@ -1,6 +1,4 @@
 
-
-
 /*
 var maryTeamScores = [101, 102, "str", 104];
 
