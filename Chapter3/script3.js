@@ -1,3 +1,33 @@
+////////////////
+// Lecture this keyword
+//console.log(this);
+
+var john = 
+{
+    name: 'John',
+    yearOfBirth: 1990,
+    calculateAge: function()
+    {
+        console.log(2019 - this.yearOfBirth);
+        console.log(this);
+   }
+
+
+}
+
+john.calculateAge();
+
+
+var mike =
+{
+    name: 'Mike',
+    yearOfBirth: 1978
+};
+
+mike.calculateAge = john.calculateAge;
+mike.calculateAge();
+
+/*
 ///////////////////////////////////////
 // Lecture: Hoisting
 calculateAge(1969);
@@ -27,7 +57,7 @@ function foo()
 foo();
 console.log(age);
 
-
+*/
 
 
 
