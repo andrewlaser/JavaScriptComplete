@@ -26,6 +26,16 @@ function GetRandomDice()
     return dice;
 }
 
+function ChangePlayer()
+{
+    roundScore = 0;
+    dice = 0;
+    document.getElementById('current-' + activePlayer).innerHTML = roundScore;    
+//    document.querySelector('.dice').style.display = 'none';
+    document.querySelector(".player-" + activePlayer + "-panel").classList.toggle('active');
+    activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
+    document.querySelector(".player-" + activePlayer + "-panel").classList.toggle('active');
+}
 
 
 //document.querySelector('#current-' + activePlayer).innerHTML = '' + scores[activePlayer] + '';
@@ -42,24 +52,32 @@ document.querySelector('.btn-roll').addEventListener('click', function()
     diceDom.style.display = 'block';
     diceDom.src = 'dice-' + dice + '.png';
 
-        if(dice !== 1)
+    if(dice !== 1)
     {
         roundScore += dice;
     }
     else
     {
-        roundScore = 0;
-        document.getElementById('current-' + activePlayer).innerHTML = roundScore;    
-        //document.querySelector(".player-" + activePlayer + "-panel").classList.remove('active');
-        document.querySelector(".player-" + activePlayer + "-panel").classList.toggle('active');
-        
-        activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
-        document.querySelector(".player-" + activePlayer + "-panel").classList.toggle('active');
-
-//        document.querySelector('.dice').style.display = 'none';
-        
+        ChangePlayer();
     }
-    document.getElementById('current-' + activePlayer).innerHTML = roundScore;    
+    document.getElementById('current-' + activePlayer).innerHTML = roundScore;
+
+}
+)
+
+document.querySelector('.btn-hold').addEventListener('click', function() 
+{
+    scores[activePlayer] += roundScore;
+    document.getElementById('score-' + activePlayer).innerHTML = scores[activePlayer];
+    ChangePlayer();
+}
+)
+
+document.querySelector('.btn-new').addEventListener('click', function()
+{
+    scores = [0,0];
+    roundScore = 0;
+    dice = 0;
 
 }
 )
