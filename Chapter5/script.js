@@ -1,25 +1,112 @@
-// Closures
-function integerSequence(startPoint) {
+// Bind, call and apply
 
-    return function() { return startPoint++; }
-
+var years = [1990, 1965, 1937, 2005, 1978];
+function arrayCalc(arr, fn)
+{
+    var arrRes = [];
+    arr.forEach(element => {
+        arrRes.push(fn(element));
+    });
+    return arrRes;
 }
 
-var seq = integerSequence(12);
+function calculateAge(el)
+{
+    return 2019 - el;
+}
 
-var seq2 = integerSequence(2000);
+function isFullAge(limit, age)
+{
+    return age >= limit;
+}
 
-console.log(seq());
+function maxHeartRate(age)
+{
+    if(age >= 18)
+    {
+        return Math.round(206.9-(0.67*age));
+    }
+    else
+    {
+        return -1;
+    }
+}
 
-console.log(seq2());
+var ages = arrayCalc(years, calculateAge);
 
-console.log(seq());
+var fullJapan = arrayCalc(ages, isFullAge.bind(this, 20));
 
-console.log(seq());
+console.log(ages);
+console.log(fullJapan);
 
-console.log(seq2());
+/*
+var john = 
+{
+    name: 'john',
+    age: 26,
+    jog: 'teacher',
+    presentation: function(style, timeOfDay)
+    {
+        if (style === 'formal')
+        {
+            console.log('Good ' + timeOfDay + ', Ladies and gentelmen! My name is ' + this.name + ' I\'m '+ this.age + ' years old')
+        }
+        else if(style === 'friendly')
+        {
+            console.log('Hey, I\'m '+ this.age + ' years old');
+        }
+        else
+        {
+            console.log('Who am I?');
+        }
+    }
+}
+
+john.presentation('formal', 'morning');
+
+var emily =
+{
+    name: 'emily',
+    age: 35,
+    job: 'designer'
+}
+
+john.presentation.call(emily, 'formal', 'afternoon');
+john.presentation.apply(emily, ['formal', 'night']);
+
+var johnFriendly = john.presentation.bind(john, 'friendly');
+johnFriendly('night');
+
+var emilyFormal = john.presentation.bind(emily, 'formal');
+emilyFormal('evening');
+*/
+
+// Closures
+/*
+function interviewQuestion(job)
+{
+    return function(name)
+    {
+        switch (job)
+        {
+            case 'designer':
+                console.log(name + ', explain UX');
+                break;
+            case 'teacher':
+                console.log(name + ', explain what subject do you teach');
+            break;
+        default:
+            console.log(name + ', hello what do you do?')
+                break;
+        }
+    }
+}
+
+interviewQuestion('teacher')('John');
+*/
 
 
+/*
 function retirement(retirementAge)
 {
     return function(yearOfBirth)
@@ -32,9 +119,11 @@ function retirement(retirementAge)
 
 var retirementUS = retirement(66);
 retirementUS(1990);
+var retirementGermany = retirement(65);
 
+retirementGermany(1990);
 retirement(66)(1990);
-
+*/
 
 
 /*
@@ -56,6 +145,7 @@ console.log(getScore);
     }
 )();
 */
+
 /*
 // Functions returning functions
 function interviewQuestion(job)
